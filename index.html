@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Recipe Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🍲 Smart Recipe Generator</h1>
+  </header>
+
+  <main>
+    <!-- Ingredient Input -->
+    <section class="input-section">
+        <h2>Enter Available Ingredients</h2>
+        <input type="text" id="ingredientInput" placeholder="e.g. tomato, rice, chicken"/>
+        <button id="addIngredientBtn">Add</button>
+        <ul id="ingredientList"></ul>
+      
+        <h3>Or Upload an Image</h3>
+        <input type="file" id="imageInput" accept="image/*"/>
+        <button id="uploadImageBtn">Detect Ingredients</button>
+      </section>
+      
+
+    <!-- Filters -->
+    <section class="filter-section">
+      <h2>Filters & Preferences</h2>
+      <label>
+        Dietary Preference:
+        <select id="dietFilter">
+          <option value="any">Any</option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="vegan">Vegan</option>
+          <option value="gluten-free">Gluten Free</option>
+        </select>
+      </label>
+      <label>
+        Max Cooking Time:
+        <select id="timeFilter">
+          <option value="any">Any</option>
+          <option value="30">≤ 30 mins</option>
+          <option value="60">≤ 60 mins</option>
+        </select>
+      </label>
+      <label>
+        Difficulty:
+        <select id="difficultyFilter">
+          <option value="any">Any</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </label>
+      <button id="generateBtn">Generate Recipes</button>
+    </section>
+
+    <!-- Recipe Results -->
+    <section class="results-section">
+      <h2>Suggested Recipes</h2>
+      <div id="recipesContainer"></div>
+    </section>
+
+    <!-- Saved Recipes -->
+    <section class="saved-section">
+      <h2>⭐ Saved Recipes</h2>
+      <div id="savedRecipes"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Smart Recipe Generator | Demo Project</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
