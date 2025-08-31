@@ -273,4 +273,34 @@ const recipes = [
         `<p>⚠️ Failed to process image.</p>`;
     }
   });
+
+  document.getElementById("detect-btn").addEventListener("click", async () => {
+    const fileInput = document.getElementById("image-upload");
+    if (!fileInput.files.length) {
+      alert("Upload an image first!");
+      return;
+    }
+  
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+  
+    reader.onloadend = async () => {
+      try {
+        const res = await fetch("/api/detect", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ image: reader.result }),
+        });
+  
+        const data = await res.json();
+        console.log("Ingredients detected:", data);
+        alert("Detected: " + (data[0]?.generated_text || "No ingredients found"));
+      } catch (err) {
+        console.error(err);
+        alert("Ingredient detection failed");
+      }
+    };
+  
+    reader.readAsDataURL(file); // Convert to Base64
+  });
   
